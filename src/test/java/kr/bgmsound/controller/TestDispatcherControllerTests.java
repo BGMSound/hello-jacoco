@@ -1,19 +1,15 @@
 package kr.bgmsound.controller;
 
+import kr.bgmsound.controller.mapping.TestDeleteController;
 import kr.bgmsound.controller.mapping.TestGetController;
 import kr.bgmsound.controller.mapping.TestPostController;
-import kr.bgmsound.controller.mapping.TestDeleteController;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Collections;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -48,12 +44,9 @@ public class TestDispatcherControllerTests {
         }
         testDispatcherController.testDispatch(command);
         switch (method) {
-            case "GET" ->
-                verify(testGetController).testGet(anyList());
-            case "POST" ->
-                verify(testPostController).testPost(anyList());
-            case "DELETE" ->
-                verify(testDeleteController).testDelete(anyList());
+            case "GET" -> verify(testGetController).testGet(anyList());
+            case "POST" -> verify(testPostController).testPost(anyList());
+            case "DELETE" -> verify(testDeleteController).testDelete(anyList());
         }
     }
 

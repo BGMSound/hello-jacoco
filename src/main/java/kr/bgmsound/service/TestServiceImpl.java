@@ -5,8 +5,6 @@ import kr.bgmsound.exception.ResourceNotFoundException;
 import kr.bgmsound.repository.TestRepository;
 import lombok.RequiredArgsConstructor;
 
-import java.util.function.IntPredicate;
-
 @RequiredArgsConstructor
 public class TestServiceImpl implements TestService {
 
@@ -14,7 +12,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public String register(String key, String value) {
-        if(testRepository.findByKey(key).isPresent()) {
+        if (testRepository.findByKey(key).isPresent()) {
             throw new ResourceAlreadyExistException();
         }
         testRepository.save(key, value);
@@ -28,7 +26,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public void remove(String key) {
-        if(testRepository.findByKey(key).isEmpty()) {
+        if (testRepository.findByKey(key).isEmpty()) {
             throw new ResourceNotFoundException();
         }
         testRepository.deleteByKey(key);

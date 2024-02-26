@@ -25,7 +25,7 @@ public class Main {
         TestDispatcherController testDispatcherController = new TestDispatcherController(testGetController, testPostController, testDeleteController);
 
         Scanner scanner = new Scanner(System.in);
-        while(true) {
+        while (true) {
             String command = scanner.nextLine();
             testDispatcherController.testDispatch(command);
         }
